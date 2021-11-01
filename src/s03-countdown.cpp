@@ -9,7 +9,6 @@ auto main (int , char* argv[]) -> int
 	do {
 		print_number (counter);
 		counter--;
-
 	} while (counter >= 0);
 
 	return 0;

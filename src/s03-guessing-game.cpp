@@ -9,7 +9,7 @@ auto main () -> int
 {
 	std::srand (std::time(nullptr));
 	int right = get_number (1, 100);
-	int picked;
+	int picked = 0;
 	
 	do { 
 		picked = guess ("guess: ");
