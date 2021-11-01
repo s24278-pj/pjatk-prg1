@@ -1,7 +1,6 @@
 #include <iostream>
 
-
-auto main() -> int
+auto main () -> int
 {
     std::cout << "Hello, Honorata!\n";
     return 0;
