@@ -1,10 +1,14 @@
 #include <iostream>
-#include <string>
 
-auto main () -> int
+auto main(int argc, char* argv[]) -> int
 {
-	auto name = std::string{};    
-	std::getline (std::cin, name);
-	std::cout << "Hello, " << name << "!\n";
-	return 0;
+    if (argc == 1) {
+        std::cout << "Provide name as argument in command line." << std::endl;
+        return 1;
+    }
+
+    auto const name = std::string{argv[1]};
+    std::cout << "Hello, " << name << "!" << std::endl;
+
+    return 0;
 }
