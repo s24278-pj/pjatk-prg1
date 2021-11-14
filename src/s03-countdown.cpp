@@ -1,21 +1,23 @@
+#include <chrono>
 #include <iostream>
 #include <string>
+#include <thread>
 
-auto print_number (int a) -> void;
-
-auto main (int , char* argv[]) -> int
+auto main(int, char* argv[]) -> int
 {
-	int counter = std::stoi (argv [1]);
-	do {
-		print_number (counter);
-		counter--;
-	} while (counter >= 0);
+    if (argv[1] == 0) {
+        std::cout << "Please provide number in command line." << std::endl;
+        return 1;
+    }
 
-	return 0;
+    int counter = std::stoi(argv[1]);
+
+    for (auto i = counter; i >= 0; --i) {
+        std::cout << i << "..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    std::cout << "Done!" << std::endl;
+
+    return 0;
 }
-
-auto print_number (int a) -> void
-{
-	std::cout  << a << "..." << std::endl;
-}
-

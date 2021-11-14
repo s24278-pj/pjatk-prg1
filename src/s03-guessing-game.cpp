@@ -1,45 +1,36 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <map>
+#include <random>
+#include <string>
 
-auto get_number (int beg, int end) -> int;
-auto guess (std::string prompt) -> int;
-
-auto main () -> int
+auto guess(std::string prompt) -> int
 {
-	std::srand (std::time(nullptr));
-	int right = get_number (1, 100);
-	int picked = 0;
-	
-	do { 
-		picked = guess ("guess: ");
-		
-		if (picked < right)
-		{
-			std::cout << "number too small! " << std::endl;
-		}
-		else if (picked > right)
-		{
-			std::cout << "number too big! " << std::endl;
-		}
-
-	 
-	} while (picked != right);
-
-	std::cout << "just right! " << std::endl;
-	
-	return 0;
+    auto g = std::string{};
+    std::cout << prompt;
+    std::getline(std::cin, g);
+    return std::stoi(g);
 }
 
-auto get_number (int beg, int end) -> int
+auto main() -> int
 {
-	return (std::rand () % end) + beg;
-}
+    std::random_device rd;
+    std::uniform_int_distribution<int> d100(1, 100);
 
-auto guess (std::string prompt) -> int
-{
-	std::string g;
-	std::cout << prompt;
-	std::getline (std::cin, g);
-	return std::stoi (g);
+    auto const right = d100(rd);
+    auto picked      = 0;
+
+    do {
+        picked = guess("guess: ");
+
+        if (picked < right) {
+            std::cout << "number too small! " << std::endl;
+        } else if (picked > right) {
+            std::cout << "number too big! " << std::endl;
+        }
+
+    } while (picked != right);
+
+    std::cout << "just right! " << std::endl;
+
+    return 0;
 }

@@ -1,27 +1,29 @@
 #include <iostream>
 #include <string>
 
-auto get_pass (std::string prompt) -> std::string;
-
-auto main (int ,char* argv[]) -> int
+auto get_pass(std::string prompt) -> std::string
 {
-	std::string pass = std::string {};
-	do {
-		pass = get_pass ("password: ");
-		std::cout << pass << std::endl;
-	} while (pass.compare(argv[1]) != 0);
-	std::cout << "ok!" <<std::endl;
+    auto a = std::string{};
+    std::cout << prompt;
+    std::getline(std::cin, a);
 
-	return 0;
+    return a;
 }
 
-auto get_pass (std::string prompt) -> std::string
+auto main(int argc, char* argv[]) -> int
 {
-	std::string a = std::string {};
-	std::cout << prompt;
-	std::getline (std::cin, a);
-	
-	return a;	
+    if (argc == 1) {
+        std::cout << "Provide correct password" << std::endl;
+        return 1;
+    }
+
+    auto const wanted_password = std::string{argv[1]};
+    auto pass                  = std::string{};
+
+    do {
+        pass = get_pass("password: ");
+    } while (wanted_password != pass);
+    std::cout << "Password correct!" << std::endl;
+
+    return 0;
 }
-
-
