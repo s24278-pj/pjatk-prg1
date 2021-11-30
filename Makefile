@@ -7,7 +7,7 @@ CXXWARNINGS=\
 		   -Werror \
 		   -Wfatal-errors
 CXXINCLUDES=\
-			-I./include
+			-I./include -I./include/s1234
 
 CXXFLAGS=\
 		 -std=$(CXXSTD) \

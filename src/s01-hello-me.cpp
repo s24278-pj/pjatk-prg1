@@ -10,11 +10,9 @@ auto main() -> int
         std::getline(std::cin, name);
         if (name.empty()) {
             std::cout << "Provide student name: ";
-        } else {
-            std::cout << "Hello, " << name << "!" << std::endl;
         }
     } while (name.empty());
-
+    std::cout << "Hello, " << name << "!" << std::endl;
 
     return 0;
 }
